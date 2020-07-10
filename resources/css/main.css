@@ -1775,6 +1775,100 @@ h6 {
 .text-decoration-none {
   text-decoration: none; }
 
+body {
+  background-color: #faf7e3; }
+
+.container {
+  max-width: 1192px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f8f4; }
+
+.wrapper-header-button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to bottom right, #fcd600, orange);
+  border-bottom: 10px solid rgba(0, 0, 0, 0.3); }
+  .wrapper-header-button header h1 {
+    color: #4e2e00; }
+  .wrapper-header-button div {
+    margin-bottom: 20px; }
+    .wrapper-header-button div button {
+      background: none;
+      border-style: none;
+      padding: 10px 20px;
+      background-color: #f9f4f4;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #6e685c;
+      font-weight: 700;
+      cursor: pointer; }
+    .wrapper-header-button div button:hover {
+      background-color: #503400;
+      color: #ffffff; }
+
+.grid-books {
+  margin: 50px 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-gap: 20px; }
+  @media screen and (min-width: 480px) {
+    .grid-books {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media screen and (min-width: 768px) {
+    .grid-books {
+      grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media screen and (min-width: 1024px) {
+    .grid-books {
+      grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .grid-books .grid-books-item {
+    position: relative;
+    display: grid;
+    align-content: space-between;
+    padding: 20px 40px 20px 20px;
+    border: 5px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: #503400;
+    color: #d9d9d9;
+    cursor: pointer; }
+    .grid-books .grid-books-item .grid-books-item-title {
+      color: #d1ca89;
+      font-size: 24px;
+      font-weight: 500; }
+    .grid-books .grid-books-item .grid-books-item-author {
+      margin-top: 10px;
+      font-size: 16px; }
+    .grid-books .grid-books-item .grid-books-item-pages-read {
+      display: grid; }
+      .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-pages {
+        margin-top: 30px;
+        font-size: 14px; }
+      .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read {
+        margin-top: 10px;
+        padding: 2px 10px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: #1d9200;
+        font-size: 16px;
+        justify-self: start;
+        cursor: pointer; }
+      .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read:hover {
+        background-color: #1d7300; }
+    .grid-books .grid-books-item .grid-books-item-delete {
+      position: absolute;
+      top: 15px;
+      right: 15px; }
+      .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon {
+        color: #dddddd;
+        font-size: 18px; }
+      .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon:hover {
+        color: red; }
+
 /*
 Start watching for compiling scss to css
 sass --watch main.scss:main.css

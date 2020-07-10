@@ -39,10 +39,30 @@ function addBookToLibrary() {
 // Steps
 
 /*
+3.0 Before this step make the styling of the website
+
 3. Hook up HTML with a render() function that loops through the array
 and displays each book. Display with some sort of table or each on their own card. 
 (could help to manually add some books to your array so you can see the display)
 */
+
+/*
+possible solution to add html content?
+
+document.getElementById('test1').innerHTML = userDetail.map(user => 
+    `<div>
+      <div>Name: ${user.name}</div>
+      <div>Age: ${user.age}</div>
+      <div>Place: ${user.place}</div>
+      <div>Country: ${user.country}</div>
+      <div>Avatar: ${user.avatar}</div>
+    </div>`
+).join('')
+*/
+
+function render(arrayOfObjects) {
+
+}
 
 /*
 4. Add a NEW BOOK button that brings up a form,

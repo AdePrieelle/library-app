@@ -31,7 +31,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #f9f8f4;
+	background-color: #ebdda5;
 }
 
 .wrapper-header-button {
@@ -70,7 +70,7 @@ body {
 	margin: 50px 20px;
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
-	@media screen and (min-width: 480px) {
+	@media screen and (min-width: 600px) {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 	@media screen and (min-width: 768px) {

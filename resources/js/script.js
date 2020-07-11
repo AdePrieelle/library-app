@@ -1,7 +1,13 @@
 "use strict";
 
+// selectors
+const gridBooks = document.querySelector(".grid-books");
+
+
+
 // 2. all books stored in simple array
-let myLibrary = [];
+// insert test objects for rendering on display
+let myLibrary = [{title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}];
 
 
 // function Book() {
@@ -14,12 +20,9 @@ function Book(title, author, pages, read) {
     title: title,
     author: author,
     pages: pages,
-    read: read
+    read: read,
   }
 }
-
-
-// const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 
 // 1. Take users input and store the new book objects into an array
 function addBookToLibrary() {
@@ -35,7 +38,6 @@ function addBookToLibrary() {
 }
 
 
-
 // Steps
 
 /*
@@ -46,23 +48,30 @@ and displays each book. Display with some sort of table or each on their own car
 (could help to manually add some books to your array so you can see the display)
 */
 
-/*
-possible solution to add html content?
-
-document.getElementById('test1').innerHTML = userDetail.map(user => 
-    `<div>
-      <div>Name: ${user.name}</div>
-      <div>Age: ${user.age}</div>
-      <div>Place: ${user.place}</div>
-      <div>Country: ${user.country}</div>
-      <div>Avatar: ${user.avatar}</div>
-    </div>`
-).join('')
-*/
-
 function render(arrayOfObjects) {
-
+  gridBooks.innerHTML = "";
+  for (let i = 0; i < arrayOfObjects.length; i++) {
+    gridBooks.innerHTML += 
+      `
+      <div class="grid-books-item">
+        <div class="grid-books-item-title-author">
+          <div class="grid-books-item-title">${arrayOfObjects[i].title}</div>
+          <div class="grid-books-item-author">${arrayOfObjects[i].author}</div>
+        </div>
+        <div class="grid-books-item-pages-read">
+          <div class="grid-books-item-pages">${arrayOfObjects[i].pages}</div>
+          <button class="grid-books-item-read">${arrayOfObjects[i].read}</button>
+        </div>
+        <div class="grid-books-item-delete">
+          <i class="grid-books-item-delete-icon fas fa-minus-circle"></i>
+        </div>
+      </div>
+      `
+  }
 }
+
+addBookToLibrary();
+render(myLibrary);
 
 /*
 4. Add a NEW BOOK button that brings up a form,

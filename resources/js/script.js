@@ -7,7 +7,7 @@ const gridBooks = document.querySelector(".grid-books");
 
 // 2. all books stored in simple array
 // insert test objects for rendering on display
-let myLibrary = [{title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}];
+let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}];
 
 
 // function Book() {
@@ -78,6 +78,17 @@ render(myLibrary);
 allowing users to input the details for the new book:
 author, title, number of pages, whether it's been read and anything else you might want.
 */
+
+const addNewBookBtn = document.querySelector(".add-new-book-btn");
+const bgModal = document.querySelector(".bg-modal");
+addNewBookBtn.addEventListener("click", function() {
+  bgModal.setAttribute("style", "display: flex;");
+});
+
+const closeBtn = document.querySelector(".close");
+closeBtn.addEventListener("click", function() {
+    bgModal.setAttribute("style", "display: none;");
+});
 
 /*
 5. Add a button on each book's display to remove the book from the library.

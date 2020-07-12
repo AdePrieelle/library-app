@@ -1867,7 +1867,74 @@ body {
         color: #dddddd;
         font-size: 18px; }
       .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon:hover {
-        color: red; }
+        color: white; }
+
+.bg-modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0; }
+
+.modal-content {
+  position: relative;
+  width: 300px;
+  height: 440px;
+  background-color: white;
+  border-radius: 4px;
+  padding: 20px 40px;
+  background-color: #cadce2; }
+
+.modal-content-title {
+  font-size: 22px; }
+
+.hr-line-form {
+  margin-bottom: 30px;
+  color: #1a8d96; }
+
+input {
+  display: block;
+  width: 100%;
+  margin: 15px auto; }
+
+.fieldset-pages {
+  width: 30%; }
+
+.fieldset-read {
+  display: flex;
+  margin-top: 10px; }
+
+.inputread-input {
+  display: inline-block;
+  width: auto;
+  margin: 1px 0 20px 10px; }
+
+.add-new-book-submit {
+  display: flex;
+  justify-content: center;
+  margin: 12px auto; }
+
+.add-new-book-submit-link {
+  text-decoration: none;
+  color: white;
+  background-color: #1a8d96;
+  padding: 10px 30px;
+  border-radius: 8px;
+  font-weight: 500; }
+
+.add-new-book-submit-link:hover {
+  background-color: #33a7af; }
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #646464; }
 
 /*
 Start watching for compiling scss to css

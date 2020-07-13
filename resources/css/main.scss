@@ -187,7 +187,7 @@ input {
 	margin-top: 10px;
 }
 
-.inputread-input {
+.input-read-text {
 	display: inline-block;
 	width: auto;
 	margin: 1px 0 20px 10px;
@@ -202,10 +202,12 @@ input {
 .add-new-book-submit-link {
 	text-decoration: none;
 	color: white;
+	border: none;
 	background-color: rgb(26, 141, 150);
 	padding: 10px 30px;
 	border-radius: 8px;
 	font-weight: 500;
+	cursor: pointer;
 }
 
 .add-new-book-submit-link:hover {

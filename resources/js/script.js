@@ -1,18 +1,12 @@
 "use strict";
 
 // selectors
-const gridBooks = document.querySelector(".grid-books");
 
 
 
 // 2. all books stored in simple array
 // insert test objects for rendering on display
-let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'read'}];
-
-
-// function Book() {
-//   // 0. the constructor, make the new objects with
-// }
+let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}];
 
 function Book(title, author, pages, read) {
   // 0. the constructor, make the new objects with
@@ -23,41 +17,62 @@ function Book(title, author, pages, read) {
     read: read,
   }
 }
-
+  
 // 1. Take users input and store the new book objects into an array
-function addBookToLibrary() {
-  // do stuff here
-  // bookName = new Book(name, pages, read); ??
 
-  // change the title, author, pages and read here towards input from the form later.
-  let title = "The Hobbit";
-  let author = "J.R.R. Tolkien";
-  let pages = 295;
-  let read = "read";
-  myLibrary.push(new Book (title, author, pages, read));
+// selectors
+const inputTitle = document.querySelector(".input-title-text");
+const inputAuthor = document.querySelector(".input-author-text");
+const inputPages = document.querySelector(".input-pages-number");
+const inputRead = document.querySelector(".input-read-text");
+
+// only allow positive numbers for inputPages
+inputPages.onkeydown = function(e) {
+  if(!((e.keyCode > 95 && e.keyCode < 106)
+    || (e.keyCode > 47 && e.keyCode < 58) 
+    || e.keyCode == 8)) {
+      return false;
+  }
 }
 
+// add new books from form to library array and render it
+function addBookToLibrary() {
+  
+  // Value of input fiels
+  let title = inputTitle.value;
+  let author = inputAuthor.value;
+  let pages = Math.floor(+inputPages.value);
+  let read = inputRead.value;
 
-// Steps
+  // Determine read checkbox value and change to Read or To Read
+  if (inputRead.checked) {
+    read = "Read";
+  } else {
+    read = "To Read"
+  }
+
+  myLibrary.push(new Book (title, author, pages, read));
+  render(myLibrary);
+  clearInputs();
+}
 
 /*
-3.0 Before this step make the styling of the website
-
 3. Hook up HTML with a render() function that loops through the array
 and displays each book. Display with some sort of table or each on their own card. 
 (could help to manually add some books to your array so you can see the display)
 */
-
+ 
+const gridBooks = document.querySelector(".grid-books");
 function render(arrayOfObjects) {
   gridBooks.innerHTML = "";
   for (let i = 0; i < arrayOfObjects.length; i++) {
     gridBooks.innerHTML += 
-      `
-      <div class="grid-books-item">
-        <div class="grid-books-item-title-author">
-          <div class="grid-books-item-title">${arrayOfObjects[i].title}</div>
-          <div class="grid-books-item-author">${arrayOfObjects[i].author}</div>
-        </div>
+    `
+    <div class="grid-books-item">
+    <div class="grid-books-item-title-author">
+    <div class="grid-books-item-title">${arrayOfObjects[i].title}</div>
+    <div class="grid-books-item-author">${arrayOfObjects[i].author}</div>
+    </div>
         <div class="grid-books-item-pages-read">
           <div class="grid-books-item-pages">${arrayOfObjects[i].pages}</div>
           <button class="grid-books-item-read">${arrayOfObjects[i].read}</button>
@@ -70,7 +85,6 @@ function render(arrayOfObjects) {
   }
 }
 
-addBookToLibrary();
 render(myLibrary);
 
 /*
@@ -79,6 +93,7 @@ allowing users to input the details for the new book:
 author, title, number of pages, whether it's been read and anything else you might want.
 */
 
+// Made modal window appear and disappear
 const addNewBookBtn = document.querySelector(".add-new-book-btn");
 const bgModal = document.querySelector(".bg-modal");
 addNewBookBtn.addEventListener("click", function() {
@@ -86,9 +101,27 @@ addNewBookBtn.addEventListener("click", function() {
 });
 
 const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", function() {
-    bgModal.setAttribute("style", "display: none;");
-});
+function closeForm() {
+  bgModal.setAttribute("style", "display: none;");
+  clearInputs();
+}
+closeBtn.addEventListener("click", closeForm);
+
+// Add form inputs to object
+// change link to submit button in html
+const submitForm = document.querySelector(".add-new-book-submit-link");
+submitForm.addEventListener("click", addBookToLibrary);
+submitForm.addEventListener("click", closeForm);
+
+// reset form values
+function clearInputs() {
+  inputTitle.value = '';
+  inputAuthor.value = '';
+  inputPages.value = 1;
+  inputRead.checked = false;
+}
+
+// fix submitting form without required input for title and author??
 
 /*
 5. Add a button on each book's display to remove the book from the library.

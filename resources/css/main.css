@@ -1907,7 +1907,7 @@ input {
   display: flex;
   margin-top: 10px; }
 
-.inputread-input {
+.input-read-text {
   display: inline-block;
   width: auto;
   margin: 1px 0 20px 10px; }
@@ -1920,10 +1920,12 @@ input {
 .add-new-book-submit-link {
   text-decoration: none;
   color: white;
+  border: none;
   background-color: #1a8d96;
   padding: 10px 30px;
   border-radius: 8px;
-  font-weight: 500; }
+  font-weight: 500;
+  cursor: pointer; }
 
 .add-new-book-submit-link:hover {
   background-color: #33a7af; }

@@ -6,7 +6,7 @@
 
 // 2. all books stored in simple array
 // insert test objects for rendering on display
-let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}];
+let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 350, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 351, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 353, read: 'Read'}];
 
 function Book(title, author, pages, read) {
   // 0. the constructor, make the new objects with
@@ -64,24 +64,89 @@ and displays each book. Display with some sort of table or each on their own car
  
 const gridBooks = document.querySelector(".grid-books");
 function render(arrayOfObjects) {
+  // innerHTML deletes all events
   gridBooks.innerHTML = "";
   for (let i = 0; i < arrayOfObjects.length; i++) {
-    gridBooks.innerHTML += 
-    `
-    <div class="grid-books-item">
-    <div class="grid-books-item-title-author">
-    <div class="grid-books-item-title">${arrayOfObjects[i].title}</div>
-    <div class="grid-books-item-author">${arrayOfObjects[i].author}</div>
-    </div>
-        <div class="grid-books-item-pages-read">
-          <div class="grid-books-item-pages">${arrayOfObjects[i].pages}</div>
-          <button class="grid-books-item-read">${arrayOfObjects[i].read}</button>
-        </div>
-        <div class="grid-books-item-delete">
-          <i class="grid-books-item-delete-icon fas fa-minus-circle"></i>
-        </div>
-      </div>
-      `
+
+    let gridBooksItem = document.createElement("div");
+    gridBooksItem.className = "grid-books-item"
+    gridBooksItem.setAttribute("data-index", `${i}`);
+
+    // gridBooksItemTitleAuthor
+    let gridBooksItemTitleAuthor = document.createElement("div");
+    gridBooksItemTitleAuthor.className = "grid-books-item-title-author";
+
+    let gridBooksItemTitle = document.createElement("div");
+    gridBooksItemTitle.className = "grid-books-item-title";
+
+    let gridBooksItemTitleTextNode = document.createTextNode(`${arrayOfObjects[i].title}`);
+    
+    let gridBooksItemAuthor = document.createElement("div");
+    gridBooksItemAuthor.className = "grid-books-item-author";
+
+    let gridBooksItemAuthorTextNode = document.createTextNode(`${arrayOfObjects[i].author}`);
+
+    // gridBooksItemPagesRead
+    let gridBooksItemPagesRead = document.createElement("div");
+    gridBooksItemPagesRead.className = "grid-books-item-pages-read";
+
+    let gridBooksItemPages = document.createElement("div");
+    gridBooksItemPages.className = "grid-books-item-pages";
+
+    let gridBooksItemPagesTextNode = document.createTextNode(`${arrayOfObjects[i].pages}`);
+
+    let gridBooksItemRead = document.createElement("button");
+    gridBooksItemRead.className = "grid-books-item-read";
+
+    let gridBooksItemReadTextNode = document.createTextNode(`${arrayOfObjects[i].read}`);
+
+    // gridBooksItemDelete
+    let gridBooksItemDelete = document.createElement("div");
+    gridBooksItemDelete.className = "grid-books-item-delete";
+    gridBooksItemDelete.setAttribute("data-index", `${i}`);
+
+    // delete the book from myLibrary and render myLibrary again
+    gridBooksItemDelete.addEventListener("click", deleteBook);
+
+    let gridBooksItemDeleteIcon = document.createElement("i");
+    gridBooksItemDeleteIcon.className += "grid-books-item-delete-icon fas fa-minus-circle";
+
+    // appendchild for every node
+    gridBooksItem.appendChild(gridBooksItemTitleAuthor);
+    gridBooksItem.appendChild(gridBooksItemPagesRead);
+    gridBooksItem.appendChild(gridBooksItemDelete);
+
+    gridBooksItemTitleAuthor.appendChild(gridBooksItemTitle);
+    gridBooksItemTitleAuthor.appendChild(gridBooksItemAuthor);
+    gridBooksItemPagesRead.appendChild(gridBooksItemPages);
+    gridBooksItemPagesRead.appendChild(gridBooksItemRead);
+    gridBooksItemDelete.appendChild(gridBooksItemDeleteIcon);
+
+    gridBooksItemTitle.appendChild(gridBooksItemTitleTextNode);
+    gridBooksItemAuthor.appendChild(gridBooksItemAuthorTextNode);
+    gridBooksItemPages.appendChild(gridBooksItemPagesTextNode);
+    gridBooksItemRead.appendChild(gridBooksItemReadTextNode);
+
+    gridBooks.appendChild(gridBooksItem);
+
+
+    // because .innerHTML is deleting all events this code doesn't work but it shows the structure for the DOM
+    // gridBooks.innerHTML += 
+    // `
+    // <div class="grid-books-item" data-index="${i}">
+    //   <div class="grid-books-item-title-author">
+    //     <div class="grid-books-item-title">${arrayOfObjects[i].title}</div>
+    //     <div class="grid-books-item-author">${arrayOfObjects[i].author}</div>
+    //   </div>
+    //   <div class="grid-books-item-pages-read">
+    //     <div class="grid-books-item-pages">${arrayOfObjects[i].pages}</div>
+    //     <button class="grid-books-item-read">${arrayOfObjects[i].read}</button>
+    //   </div>
+    //   <div class="grid-books-item-delete" data-index="${i}">
+    //     <i class="grid-books-item-delete-icon fas fa-minus-circle"></i>
+    //   </div>
+    // </div>
+    // `
   }
 }
 
@@ -103,9 +168,10 @@ addNewBookBtn.addEventListener("click", function() {
 const closeBtn = document.querySelector(".close");
 function closeForm() {
   bgModal.setAttribute("style", "display: none;");
-  clearInputs();
 }
 closeBtn.addEventListener("click", closeForm);
+closeBtn.addEventListener("click", clearInputs);
+
 
 // Add form inputs to object
 // change link to submit button in html
@@ -129,11 +195,20 @@ function clearInputs() {
 one easy solution is giving them a data-attribute that correspons to the index of the library array
 */
 
+function deleteBook() {
+  // determine index of item to delete
+  let indexItemToDelete = +this.getAttribute("data-index");
+  myLibrary.splice(indexItemToDelete, 1);
+  render(myLibrary);
+}
+
 /*
 6. Add a button on each book's display to change its READ status
 6.1 To facilitate this you will want to create the function that 
 toggles a book's READ status on your BOOK prototype instance.
 */
+
+
 
 /*
 7. Optional -we haven't learned any techniques for actually sotring our data anywhere,

@@ -100,6 +100,16 @@ function render(arrayOfObjects) {
 
     let gridBooksItemReadTextNode = document.createTextNode(`${arrayOfObjects[i].read}`);
 
+    // change read status, update myLibrary and render again
+    gridBooksItemRead.addEventListener("click", function() {
+      if (arrayOfObjects[i].read == "Read") {
+        arrayOfObjects[i].read = "To Read";
+      } else if (arrayOfObjects[i].read == "To Read") {
+        arrayOfObjects[i].read = "Read";
+      }
+      render(myLibrary);
+    });
+
     // gridBooksItemDelete
     let gridBooksItemDelete = document.createElement("div");
     gridBooksItemDelete.className = "grid-books-item-delete";
@@ -208,7 +218,32 @@ function deleteBook() {
 toggles a book's READ status on your BOOK prototype instance.
 */
 
+// See gridBooksItemRead.addEventListener.
+// The function below doesn't work when adding to the addEventListener
+// because it cant access arrayOfObjects[i]
 
+// function changeReadStatus() {
+//   if (arrayOfObjects[i].read == "Read") {
+//     arrayOfObjects[i].read = "To Read";
+//   } else if (arrayOfObjects[i].read == "To Read") {
+//     arrayOfObjects[i].read = "Read";
+//   }
+//   render(myLibrary);
+// }
+
+// Change color of Read and To Read items
+
+// const colorGridBookItemRead = document.querySelector(".grid-books-item-read");
+// colorGridBookItemRead.addEventListener("click", changeColorReadToRead);
+// function changeColorReadToRead() {
+//   if (colorGridBookItemRead.innerHTML == "Read") {
+//     colorGridBookItemRead.setAttribute("style", "background-color: red");
+//   } else if (colorGridBookItemRead.innerHTML == "To Read") {
+//     colorGridBookItemRead.setAttribute("style", "background-color: grey");
+//   }
+// }
+
+// changeColorReadToRead();
 
 /*
 7. Optional -we haven't learned any techniques for actually sotring our data anywhere,

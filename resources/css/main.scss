@@ -125,6 +125,12 @@ body {
 			.grid-books-item-read:hover {
 				background-color: rgb(29, 115, 0);
 			}
+			.grid-books-item-read-to-read {
+				background-color: rgb(114, 103, 83);
+			}
+			.grid-books-item-read-to-read:hover {
+				background-color: rgb(100, 84, 60);
+			}
 		}
 		.grid-books-item-delete {
 			position: absolute;

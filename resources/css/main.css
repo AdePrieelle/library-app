@@ -1859,6 +1859,10 @@ body {
         cursor: pointer; }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read:hover {
         background-color: #1d7300; }
+      .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read-to-read {
+        background-color: #726753; }
+      .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read-to-read:hover {
+        background-color: #64543c; }
     .grid-books .grid-books-item .grid-books-item-delete {
       position: absolute;
       z-index: 999;

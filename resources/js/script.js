@@ -98,6 +98,11 @@ function render(arrayOfObjects) {
     let gridBooksItemRead = document.createElement("button");
     gridBooksItemRead.className = "grid-books-item-read";
 
+    if (arrayOfObjects[i].read == "To Read") {
+      // add a space inside "" before the classname so it appends after already applied classes
+      gridBooksItemRead.className += " grid-books-item-read-to-read";
+    };
+
     let gridBooksItemReadTextNode = document.createTextNode(`${arrayOfObjects[i].read}`);
 
     // change read status, update myLibrary and render again
@@ -230,20 +235,6 @@ toggles a book's READ status on your BOOK prototype instance.
 //   }
 //   render(myLibrary);
 // }
-
-// Change color of Read and To Read items
-
-// const colorGridBookItemRead = document.querySelector(".grid-books-item-read");
-// colorGridBookItemRead.addEventListener("click", changeColorReadToRead);
-// function changeColorReadToRead() {
-//   if (colorGridBookItemRead.innerHTML == "Read") {
-//     colorGridBookItemRead.setAttribute("style", "background-color: red");
-//   } else if (colorGridBookItemRead.innerHTML == "To Read") {
-//     colorGridBookItemRead.setAttribute("style", "background-color: grey");
-//   }
-// }
-
-// changeColorReadToRead();
 
 /*
 7. Optional -we haven't learned any techniques for actually sotring our data anywhere,

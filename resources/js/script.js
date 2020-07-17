@@ -1,12 +1,61 @@
 "use strict";
 
-// selectors
+// use localStorage.clear() to reset the library
+// localStorage.clear();
+let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 309, read: 'Read'}, {title: 'The Hobbit', author: 'J.R.R. Tolkien', pages: 310, read: 'Read'}, {title: 'The Da Vinci Code', author: 'Dan Brown', pages: 583, read: 'To Read'}, {title: 'Harry Potter and the Chamber of Secrets', author: 'J.K. Rowling', pages: 360, read: 'Read'}, {title: 'Harry Potter and the Prisoner of Azkaban', author: 'J.K. Rowling', pages: 462, read: 'To Read'}, {title: 'The Kite Runner', author: 'Khaled Hosseini', pages: 372, read: 'Read'}, {title: 'The Hunger Games', author: 'Suzanne Collins', pages: 374, read: 'To Read'}, {title: 'The Godfather', author: 'Mario Puzo', pages: 448, read: 'Read'}, {title: 'Catching Fire', author: 'Suzanne Collins', pages: 391, read: 'To Read'}];
 
+// function that detects whether localStorage is both supported and available
+function storageAvailable(type) {
+  let storage;
+  try {
+    storage = window[type];
+    let x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  }
+  catch(e) {
+    return e instanceof DOMException && (
+      // everything except Firefox
+      e.code === 22 ||
+      // Firefox
+      e.code === 1014 ||
+      // test name field too, because code might not be present
+      // everything except Firefox
+      e.name === 'QuotaExceededError' ||
+      // Firefox
+      e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      (storage && storage.length !== 0);
+  }
+}
 
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+}
+else {
+  // Too bad, no localStorage for us
+}
+
+// Testing whether storage has been populated
+if(!localStorage.getItem('myLibrary')) {
+  populateStorage();
+} else {
+  setStyles();
+}
+
+// Setting values in storage
+function populateStorage() {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+  setStyles();
+}
+
+// Getting values from storage
+function setStyles() {
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+}
 
 // 2. all books stored in simple array
-// insert test objects for rendering on display
-let myLibrary = [{title: "Harry Potter and the Philosopher's Stone", author: 'J.K. Rowling', pages: 350, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 351, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 352, read: 'Read'}, {title: 'Harry Potter and the Philosopher\'s Stone', author: 'J.K. Rowling', pages: 353, read: 'Read'}];
 
 function Book(title, author, pages, read) {
   // 0. the constructor, make the new objects with
@@ -52,6 +101,8 @@ function addBookToLibrary() {
   }
 
   myLibrary.push(new Book (title, author, pages, read));
+  // myLibrary localStorage updated once a new book gets added
+  populateStorage();
   render(myLibrary);
   clearInputs();
 }
@@ -112,6 +163,8 @@ function render(arrayOfObjects) {
       } else if (arrayOfObjects[i].read == "To Read") {
         arrayOfObjects[i].read = "Read";
       }
+      // myLibrary localStorage is updated once the read status is changed
+      populateStorage();
       render(myLibrary);
     });
 
@@ -214,6 +267,8 @@ function deleteBook() {
   // determine index of item to delete
   let indexItemToDelete = +this.getAttribute("data-index");
   myLibrary.splice(indexItemToDelete, 1);
+  // myLibrary localStorage updated once a  book gets deleted
+  populateStorage();
   render(myLibrary);
 }
 
@@ -253,4 +308,3 @@ Teaching you how to use it is beyong the scope of this tutorial,
 but it is almost definetely without your skill set.
 If you're interested, check out this video to see what it's all about.
 */
-

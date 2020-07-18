@@ -1890,7 +1890,7 @@ body {
   padding: 20px 40px;
   border-radius: 4px;
   width: 300px;
-  height: 440px;
+  height: auto;
   max-height: 80vh;
   border-radius: 5px;
   background-color: #cadce2;
@@ -1906,7 +1906,13 @@ body {
 input {
   display: block;
   width: 100%;
+  padding: 12px 8px;
+  border-style: none;
+  border-radius: 4px;
   margin: 15px auto; }
+
+.input-small-padding {
+  padding: 8px 4px; }
 
 .fieldset-pages {
   width: 30%; }
@@ -1923,7 +1929,7 @@ input {
 .add-new-book-submit {
   display: flex;
   justify-content: center;
-  margin: 12px auto; }
+  margin: 12px auto 10px auto; }
 
 .add-new-book-submit-link {
   text-decoration: none;

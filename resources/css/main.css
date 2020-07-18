@@ -1794,7 +1794,8 @@ body {
   background-image: linear-gradient(to bottom right, #fcd600, orange);
   border-bottom: 10px solid rgba(0, 0, 0, 0.3); }
   .wrapper-header-button header h1 {
-    color: #4e2e00; }
+    color: #4e2e00;
+    text-align: center; }
   .wrapper-header-button div {
     margin-bottom: 20px; }
     .wrapper-header-button div button {

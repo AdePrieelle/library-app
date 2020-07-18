@@ -1865,7 +1865,6 @@ body {
         background-color: #64543c; }
     .grid-books .grid-books-item .grid-books-item-delete {
       position: absolute;
-      z-index: 999;
       top: 15px;
       right: 15px; }
       .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon {
@@ -1875,24 +1874,26 @@ body {
         color: white; }
 
 .bg-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: none;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 0; }
+  background: rgba(0, 0, 0, 0.7); }
 
 .modal-content {
   position: relative;
-  z-index: 9999;
+  padding: 20px 40px;
+  border-radius: 4px;
   width: 300px;
   height: 440px;
-  background-color: white;
-  border-radius: 4px;
-  padding: 20px 40px;
-  background-color: #cadce2; }
+  max-height: 80vh;
+  border-radius: 5px;
+  background-color: #cadce2;
+  overflow-y: auto; }
 
 .modal-content-title {
   font-size: 22px; }

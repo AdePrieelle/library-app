@@ -19,7 +19,7 @@ html {
 @import 'partials/visual';
 @import 'partials/navbar';
 
-// Body
+// body
 
 body {
 	background-color: #faf7e3;
@@ -27,25 +27,27 @@ body {
 
 .container {
 	max-width: 1192px;
-	margin: 0 auto;
+	margin: 0 auto 30px auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #ebdda5;
+	background-color: #D2DBDD;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
 }
 
-// Header and button
+// wrapper-header-button
 
 .wrapper-header-button {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-image: linear-gradient(to bottom right, rgb(252, 214, 0), orange);
+	background-color: rgb(23, 142, 211);
 	border-bottom: 10px solid rgba(0, 0, 0, .3);
 	header {
 		h1 {
-			color: rgb(78, 46, 0);
+			color: rgb(255, 255, 255);
 			text-align: center;
 		}
 	}
@@ -55,21 +57,21 @@ body {
 			background: none;
 			border-style: none;
 			padding: 10px 20px;
-			background-color: #f9f4f4;
-			border-radius: 5px;
+			background: linear-gradient(to bottom right, rgb(176, 233, 243), rgb(197, 255, 192));
+			border-radius: 50px;
 			font-size: 16px;
 			color: rgb(110, 104, 92);
 			font-weight: 700;
 			cursor: pointer;
+			transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 		}
 		button:hover {
-			background-color: #503400;
-			color: #ffffff;
+			transform: scale(1.1);
 		}
 	}
 }
 
-// Grid books
+// grid books
 
 .grid-books {
 	margin: 50px 20px;
@@ -90,47 +92,51 @@ body {
 		display: grid;
 		align-content: space-between;
 		padding: 20px 40px 20px 20px;
-		border: 5px solid rgba(0,0,0,0.5);
-		border-radius: 5px;
-		background-color: #503400;
+		border-radius: 12px;
+		background-color: white;
+		box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
 		color: #d9d9d9;
 		cursor: pointer;
-
+		transition: .2s;
 		.grid-books-item-title {
-			color: #d1ca89;
+			color: black;
 			font-size: 24px;
 			font-weight: 500;
 		}
 		.grid-books-item-author {
 			margin-top: 10px;
-			font-size: 16px;
+			font-size: 14px;
+			color: #868686;
 		}
 
 		.grid-books-item-pages-read {
 			display: grid;
 			.grid-books-item-pages {
 				margin-top: 30px;
-				font-size: 14px;
+				font-size: 12px;
+				color: #868686;
 			}
 			.grid-books-item-read {
 				margin-top: 10px;
 				padding: 2px 10px;
 				border: none;
-				border-radius: 5px;
+				border-radius: 50px;
 				color: white;
-				background-color: rgb(29, 146, 0);
+				background-color: #2196F3;
 				font-size: 16px;
 				justify-self: start;
 				cursor: pointer;
+				transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 			}
 			.grid-books-item-read:hover {
-				background-color: rgb(29, 115, 0);
+				background-color: rgb(12, 139, 243);
+				transform: scale(1.1);
 			}
 			.grid-books-item-read-to-read {
-				background-color: rgb(114, 103, 83);
+				background-color: rgb(136, 162, 167);
 			}
 			.grid-books-item-read-to-read:hover {
-				background-color: rgb(100, 84, 60);
+				background-color: rgb(114, 137, 141);
 			}
 		}
 		.grid-books-item-delete {
@@ -138,17 +144,23 @@ body {
 			top: 15px;
 			right: 15px;
 			.grid-books-item-delete-icon {
-				color: rgb(221, 221, 221);
+				color: rgb(146, 146, 146);
 				font-size: 18px;
 			}
 			.grid-books-item-delete-icon:hover {
-				color: white;
+				color: rgb(71, 79, 82);
+				transform: scale(1.1);
 			}
 		}
+	}
+	.grid-books-item:hover {
+		transform: translateY(-1%);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
 	}
 }
 
 // bg-modal
+
 .bg-modal {
 	position: fixed;
 	top: 0;
@@ -159,33 +171,6 @@ body {
 	justify-content: center;
 	align-items: center;
 	background: rgba(0,0,0,0.7);
-
-	// display: none;
-	// justify-content: center;
-	// // .modal-content height + 2 * top position .modal-content
-	// @media screen and (min-height: 500px) {
-	// 	align-items: center;
-	// }
-	// width: 100%;
-	// height: 100%;
-	// background-color: rgba(0, 0, 0, .7);
-	// position: absolute;
-	// top: 0;
-
-	// position: fixed;
-  // display: none;
-  // width: 100%;
-	// height: 100%;
-	// padding: 50px 0;
-  // top: 0;
-  // left: 0;
-  // right: 0;
-  // bottom: 0;
-  // background-color: rgba(0,0,0,0.7);
-	// z-index: 2;
-	// overflow-y: scroll;
-	// scroll-margin-bottom: 10px;
-	// cursor: pointer;
 }
 
 .modal-content {
@@ -198,40 +183,6 @@ body {
 	border-radius: 5px;
 	background-color: #cadce2;
 	overflow-y: auto;
-
-	// position: relative;
-	// top: 30px;
-	// // .modal-content height + 2 * top position .modal-content
-	// @media screen and (min-height: 500px) {
-	// 	top: 0px;		
-	// }
-	// z-index: 9999;
-	// width: 300px;
-	// height: 440px;
-	// background-color: white;
-	// border-radius: 4px;
-	// padding: 20px 40px;
-	// background-color: #cadce2;
-	
-	// position: absolute;
-	// top: 30px;
-	// // .modal-content height + 2 * top position .modal-content
-	// left: 50%;
-	// transform: translate(-50%,-0%);
-	// -ms-transform: translate(-50%,-0%);
-	// @media screen and (min-height: 500px) {
-	// 	top: 50%;
-	// 	// left: 50%;
-	// 	transform: translate(-50%,-50%);
-	// 	-ms-transform: translate(-50%,-50%);
-	// }
-	// z-index: 9999;
-	// width: 300px;
-	// height: 440px;
-	// background-color: white;
-	// border-radius: 4px;
-	// padding: 20px 40px;
-	// background-color: #cadce2;
 }
 
 .modal-content-title {

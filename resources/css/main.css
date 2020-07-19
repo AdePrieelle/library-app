@@ -1780,21 +1780,23 @@ body {
 
 .container {
   max-width: 1192px;
-  margin: 0 auto;
+  margin: 0 auto 30px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ebdda5; }
+  background-color: #D2DBDD;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px; }
 
 .wrapper-header-button {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(to bottom right, #fcd600, orange);
+  background-color: #178ed3;
   border-bottom: 10px solid rgba(0, 0, 0, 0.3); }
   .wrapper-header-button header h1 {
-    color: #4e2e00;
+    color: white;
     text-align: center; }
   .wrapper-header-button div {
     margin-bottom: 20px; }
@@ -1802,15 +1804,15 @@ body {
       background: none;
       border-style: none;
       padding: 10px 20px;
-      background-color: #f9f4f4;
-      border-radius: 5px;
+      background: linear-gradient(to bottom right, #b0e9f3, #c5ffc0);
+      border-radius: 50px;
       font-size: 16px;
       color: #6e685c;
       font-weight: 700;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28); }
     .wrapper-header-button div button:hover {
-      background-color: #503400;
-      color: #ffffff; }
+      transform: scale(1.1); }
 
 .grid-books {
   margin: 50px 20px;
@@ -1831,48 +1833,57 @@ body {
     display: grid;
     align-content: space-between;
     padding: 20px 40px 20px 20px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    background-color: #503400;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
     color: #d9d9d9;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: .2s; }
     .grid-books .grid-books-item .grid-books-item-title {
-      color: #d1ca89;
+      color: black;
       font-size: 24px;
       font-weight: 500; }
     .grid-books .grid-books-item .grid-books-item-author {
       margin-top: 10px;
-      font-size: 16px; }
+      font-size: 14px;
+      color: #868686; }
     .grid-books .grid-books-item .grid-books-item-pages-read {
       display: grid; }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-pages {
         margin-top: 30px;
-        font-size: 14px; }
+        font-size: 12px;
+        color: #868686; }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read {
         margin-top: 10px;
         padding: 2px 10px;
         border: none;
-        border-radius: 5px;
+        border-radius: 50px;
         color: white;
-        background-color: #1d9200;
+        background-color: #2196F3;
         font-size: 16px;
         justify-self: start;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28); }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read:hover {
-        background-color: #1d7300; }
+        background-color: #0c8bf3;
+        transform: scale(1.1); }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read-to-read {
-        background-color: #726753; }
+        background-color: #88a2a7; }
       .grid-books .grid-books-item .grid-books-item-pages-read .grid-books-item-read-to-read:hover {
-        background-color: #64543c; }
+        background-color: #72898d; }
     .grid-books .grid-books-item .grid-books-item-delete {
       position: absolute;
       top: 15px;
       right: 15px; }
       .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon {
-        color: #dddddd;
+        color: #929292;
         font-size: 18px; }
       .grid-books .grid-books-item .grid-books-item-delete .grid-books-item-delete-icon:hover {
-        color: white; }
+        color: #474f52;
+        transform: scale(1.1); }
+  .grid-books .grid-books-item:hover {
+    transform: translateY(-1%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
 
 .bg-modal {
   position: fixed;
